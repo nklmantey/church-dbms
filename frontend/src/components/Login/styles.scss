@@ -1,0 +1,91 @@
+.left-container {
+    width: 50vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.right-container {
+    width: 50vw;
+    height: 100vh;
+}
+
+.img {
+    width: 50vw;
+    height: 100vh;
+}
+
+.logo-container {
+    position: absolute;
+    top: 0;
+    margin-top: 2vh;
+    margin-left: 2vh;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+
+    h2 {
+        font-family: 'Along Sans';
+        font-size: small;
+        font-weight: 900;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .create-account {
+        font-size: 32px;
+        font-weight: 900;
+        text-align: center;
+        margin-top: 30vh;
+    }
+}
+
+.username-input, .pwd-input {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: 768px) {
+        width: 45vw;
+    }
+
+    @media screen and (min-width: 1440px) {
+        width: 35vw;
+    }
+}
+
+.create-account-btn {
+    background-color: black;
+    margin: auto;
+    display: flex;
+    height: 7vh;
+    width: 35vw;
+    border-radius: 5px;
+    margin-top: 5vh;
+
+    @media screen and (min-width: 1440px) {
+        width: 20vw;
+    }
+}
+
+.signup-btn {
+    background-color: white;
+    margin: auto;
+    display: flex;
+    height: 7vh;
+    width: 35vw;
+    border-radius: 5px;
+    border: 1px solid black;
+    
+    @media screen and (min-width: 1440px) {
+        width: 20vw;
+    }
+}
+
+.icon {
+    margin-top: 1vh;
+}
