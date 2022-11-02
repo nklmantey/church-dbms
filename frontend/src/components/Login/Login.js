@@ -1,7 +1,8 @@
-import { Button, HStack, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
+import { Button, HStack, IconButton, Input, InputGroup, InputLeftElement, InputRightAddon, Stack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import './styles.scss'
 import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
+import { AiFillEye, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -17,22 +18,22 @@ const Login = () => {
       </HStack>
       <div className='left-container'>
         <Stack spacing={2}>
-          <h1 className='create-account'>Create admin account</h1>
+          <h1 className='create-admin-account'>Create admin account</h1>
           <div className='username-container'>
             <InputGroup className='username-input' w='80vw'>
               <InputLeftElement
                 pointerEvents='none'
                 children={
-                  <TiUserOutline className='icon' size={25} />
+                  <TiUserOutline className='icon' size={25} color='gray' />
                 }
               />
               <Input 
                 type='text' 
                 placeholder='Username'
                 border='2px'
-                borderColor='grey'
+                borderColor='gray.300'
                 size='lg'
-                onChange={(e) => e.target.value}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </InputGroup>
           </div>
@@ -41,16 +42,18 @@ const Login = () => {
               <InputLeftElement
                 pointerEvents='none'
                 children={
-                  <TiLockClosedOutline className='icon' size={25} />
+                  <TiLockClosedOutline className='icon' size={25} color='gray' />
                 }
               />
-              <Input 
+              <Input
                 type='password' 
                 placeholder='Password'
+                isInvalid={password.length === 0 ? false : password.length > 8 ? false : true} 
+                errorBorderColor='red.300'
                 border='2px'
-                borderColor='grey'
+                borderColor='gray.300'
                 size='lg'
-                onChange={(e) => e.target.value}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </InputGroup>
           </div>
@@ -77,6 +80,19 @@ const Login = () => {
             >
               Sign up with Google
             </Button>
+          </div>
+          <div>
+            <Button 
+                className='go-to-login-link' 
+                color='blackAlpha.500'  
+                size='sm'
+                mt={'2vh'}
+                variant='link' 
+                colorScheme='blackAlpha'
+                onClick={() => alert('button clicked')}
+              >
+                <h2>Already have an account? Go to login</h2>
+              </Button>
           </div>
         </Stack>
       </div>
