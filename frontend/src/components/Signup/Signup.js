@@ -4,7 +4,7 @@ import './styles.scss'
 import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -13,13 +13,13 @@ const Login = () => {
       <HStack className='logo-container'>
         <img 
           src={require('../../images/logo.png')}
-          alt='logo'
+          alt='log'
         />
         <h2>ACES DBMS</h2>
       </HStack>
       <div className='left-container'>
         <Stack spacing={2}>
-          <h1 className='create-admin-account'>Welcome back, log in</h1>
+          <h1 className='create-admin-account'>Create admin account</h1>
           <div className='username-container'>
             <InputGroup className='username-input' w='80vw'>
               <InputLeftElement
@@ -62,41 +62,41 @@ const Login = () => {
           </div>
           </Stack>
           <Stack spacing={2}>
-          <div>
+          <div className='ca-btn-container'>
             <Button 
-              className='login-btn' 
+              className='create-account-btn' 
               color='white' size='lg' 
               colorScheme='blackAlpha' 
               onClick={() => alert('button clicked')}
             >
-              Log in
+              Create account
             </Button>
           </div>
-          <div>
+          <div className='su-btn-container'>
             <Button 
-              className='login-google-btn' 
+              className='signup-btn' 
               color='black' 
               size='lg' 
               variant='outline' 
               colorScheme='blackAlpha'
               onClick={() => alert('button clicked')}
             >
-              Log in with Google
+              Sign up with Google
             </Button>
           </div>
           <div>
-            <Link to="/signup">
+            <Link to="/login">
               <Button 
-                  className='go-to-signup-link' 
+                  className='go-to-login-link' 
                   color='blackAlpha.500'  
                   size='sm'
                   mt={'2vh'}
                   variant='link' 
                   colorScheme='blackAlpha'
                 >
-                  <h2>Already have an account? Go to signup</h2>
-                </Button>
-              </Link>
+                  <h2>Already have an account? Go to login</h2>
+              </Button>
+            </Link>
           </div>
         </Stack>
       </div>
@@ -111,4 +111,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signup

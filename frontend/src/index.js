@@ -1,10 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App";
-// import { BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
+
+//pages
+import App from "./App";
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
 
 const chakraTheme = extendTheme({
   colors: {
@@ -46,7 +50,13 @@ const root = createRoot(container);
 root.render(
     <CacheProvider value={emotionCache}>
       <ChakraProvider theme={chakraTheme}>
-        <App />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+          </Routes>
+        </BrowserRouter>
       </ChakraProvider>
     </CacheProvider>
 );
