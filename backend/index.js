@@ -11,7 +11,11 @@ import membersRoutes from './routes/members.js';
 import scheduleRoutes from './routes/schedule.js';
 import usersRoutes from './routes/users.js';
 
+//models
+import userModel from './models/userModel.js';
+
 const app = express();
+const bcrypt = require("bcrypt");
 
 app.use('/finance', financeRoutes);
 app.use('/inventory', inventoryRoutes);
