@@ -9,6 +9,7 @@ import { CacheProvider } from "@emotion/react";
 import App from "./App";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
+import Finance from "./components/Finance/Finance";
 
 const chakraTheme = extendTheme({
   colors: {
@@ -55,6 +56,7 @@ root.render(
             <Route path="/" element={<App />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
+            <Route path="finance" element={<Finance />} />
           </Routes>
         </BrowserRouter>
       </ChakraProvider>

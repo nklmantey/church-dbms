@@ -63,14 +63,15 @@ const Login = () => {
           </Stack>
           <Stack spacing={2}>
           <div>
-            <Button 
-              className='login-btn' 
-              color='white' size='lg' 
-              colorScheme='blackAlpha' 
-              onClick={() => alert('button clicked')}
-            >
-              Log in
-            </Button>
+            <Link to="/finance">
+              <Button 
+                className='login-btn' 
+                color='white' size='lg' 
+                colorScheme='blackAlpha' 
+              >
+                Log in
+              </Button>
+            </Link>
           </div>
           <div>
             <Button 

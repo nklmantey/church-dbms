@@ -1,11 +1,11 @@
 import React from 'react'
-// import Login from './components/Login/Login'
-import Finance from './components/Finance/Finance'
+import Login from './components/Login/Login'
+// import Finance from './components/Finance/Finance'
 
 const App = () => {
   return (
     <div>
-      <Finance />
+      <Login />
     </div>    
   )
 }

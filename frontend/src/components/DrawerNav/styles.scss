@@ -1,0 +1,50 @@
+.logo-container {
+    position: absolute;
+    top: 0;
+    margin-top: 2vh;
+    margin-left: 2vh;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+
+    h2 {
+        font-family: 'Along Sans';
+        font-size: small;
+        font-weight: 900;
+    }
+}
+
+.drawer-items {
+    margin-top: 10vh;
+
+    @media screen and (min-width: 768px){
+        align-self: flex-start;
+    }
+}
+
+.single-drawer-item {
+    justify-content: flex-start;
+    align-items: center;
+    height: 6vh;
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        align-self: flex-start;
+        width: 20vw;
+    }
+}
+
+.logout-btn {
+    background-color: black;
+    margin: auto;
+    display: flex;
+    height: 7vh;
+    width: 35vw;
+    border-radius: 5px;
+    margin-top: 5vh;
+
+    @media screen and (min-width: 1440px) {
+        width: 20vw;
+    }
+}

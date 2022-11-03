@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import './styles.scss'
+import DrawerNav from '../DrawerNav/DrawerNav'
 
 const Finance = () => {
-  return (
-    <div>Finance</div>
+  return(
+    <DrawerNav />
   )
 }
 
