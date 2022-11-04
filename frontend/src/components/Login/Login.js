@@ -62,10 +62,9 @@ const Login = () => {
           </div>
           </Stack>
           <Stack spacing={2}>
-          <div>
+          <div className='link-container'>
             <Link to="/finance">
               <Button 
-                className='login-btn' 
                 color='white' size='lg' 
                 colorScheme='blackAlpha' 
               >

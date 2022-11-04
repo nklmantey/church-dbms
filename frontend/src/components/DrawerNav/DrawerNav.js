@@ -57,7 +57,7 @@ const DrawerNav = () => {
   
     return (
       <>
-        <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
+        <Button ref={btnRef} colorScheme='messenger' onClick={onOpen} borderRadius='full'>
           Open
         </Button>
         <Drawer
@@ -81,7 +81,7 @@ const DrawerNav = () => {
             </DrawerHeader>
   
             <DrawerBody className='drawer-items'>
-              <VStack spacing={8}>
+              <VStack spacing={5}>
                 {/* finance */}
                 <Button className='single-drawer-item' bgColor={financeSelected ? 'red.300' : null} onClick={handleFinance} w='16vw' variant={'ghost'}> 
                   <HStack spacing={4}>

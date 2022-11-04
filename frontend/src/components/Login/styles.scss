@@ -55,19 +55,28 @@
         width: 35vw;
     }
 }
+.link-container {
+    width: fit-content;
+    display: flex;
+    margin: auto;
+    margin-top: 5vh;
+    border-radius: 5px;
+
+    button {
+        background-color: black;
+        margin: auto;
+        display: flex;
+        height: 7vh;
+        width: 35vw;
+
+        @media screen and (min-width: 1440px) {
+            width: 20vw;
+        }
+    }
+}
 
 .login-btn {
-    background-color: black;
-    margin: auto;
-    display: flex;
-    height: 7vh;
-    width: 35vw;
-    border-radius: 5px;
-    margin-top: 5vh;
-
-    @media screen and (min-width: 1440px) {
-        width: 20vw;
-    }
+    
 }
 
 .login-google-btn {
