@@ -1,11 +1,11 @@
 import express from 'express';
 
 //controllers for route
-// import { getPosts, createPost } from '../controllers/posts.js';
+import { getFinanceData, addFinanceData } from '../controllers/finance.js';
 
 const router = express.Router();
 
-// router.get('/', getPosts);
-// router.post('/new', createPost);
+router.get('/', getFinanceData);
+router.get('/', addFinanceData);
 
 export default router;

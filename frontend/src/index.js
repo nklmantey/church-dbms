@@ -4,12 +4,21 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
 
 //pages
 import App from "./App";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
-import Finance from "./components/Finance/Finance";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Finance from "./pages/Finance/Finance";
+import Evangelism from "./pages/Evangelism/Evangelism";
+
+//redux
+import reducers from "./utils/reducers";
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
+
 
 const chakraTheme = extendTheme({
   colors: {
@@ -49,16 +58,19 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-    <CacheProvider value={emotionCache}>
-      <ChakraProvider theme={chakraTheme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="finance" element={<Finance />} />
-          </Routes>
-        </BrowserRouter>
-      </ChakraProvider>
-    </CacheProvider>
+    <Provider store={store}>
+      <CacheProvider value={emotionCache}>
+        <ChakraProvider theme={chakraTheme}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="finance" element={<Finance />} />
+              <Route path="evangelism" element={<Evangelism />} />
+            </Routes>
+          </BrowserRouter>
+        </ChakraProvider>
+      </CacheProvider>
+    </Provider>
 );
