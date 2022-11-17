@@ -1,16 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const { getFinance, createFinance, updateFinance, deleteFinance } = require('../controllers/financeController') 
+const { protect } = require('../middleware/authMiddleware')
 
 //match routes to controllers
 // for ('/') route
 router.route('/')
-    .get(getFinance)
-    .post(createFinance)
+    .get(protect, getFinance)
+    .post(protect, createFinance)
 
 //for ('/:id') route
 router.route('/:id')
-    .put(updateFinance)
-    .delete(deleteFinance)
+    .put(protect, updateFinance)
+    .delete(protect, deleteFinance)
 
 module.exports = router

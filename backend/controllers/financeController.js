@@ -1,9 +1,10 @@
 const asyncHandler = require('express-async-handler')
 const financeModel = require('../models/financeModel.js')
+const userModel = require('../models/userModel.js')
 
 // @description: get all the finannce records from db
 const getFinance = asyncHandler(async (req, res) => {
-    const finances = await financeModel.find()
+    const finances = await financeModel.find({ user: req.user.id })
 
     res.status(200).json(finances)
 })
@@ -19,6 +20,7 @@ const createFinance = asyncHandler(async (req, res) => {
    const newFinance = await financeModel.create({
     financeType: req.body.financeType,
     totalAmount: req.body.totalAmount,
+    user: req.user.id
    })
 
     res.status(200).json(newFinance)
@@ -33,6 +35,20 @@ const updateFinance = asyncHandler(async (req, res) => {
         throw new Error ('finance record not found')
     }
 
+    const user = await userModel.findById(req.user.id)
+
+    //check if user already exists
+    if(!user) {
+        res.status(401)
+        throw new Error ('user not found')
+    }
+
+    //checking that only logged in user can update their record
+    if(financeToUpdate.user.toString() !== user.id) {
+        res.status(401)
+        throw new Error ('user not authorized')
+    }
+
     const updatedFinanceRecord = await financeModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
     res.status(200).json(updatedFinanceRecord)
@@ -45,6 +61,20 @@ const deleteFinance = asyncHandler(async (req, res) => {
     if(!financeToDelete) {
         res.status(400)
         throw new Error('finance record not found')
+    }
+
+    const user = await userModel.findById(req.user.id)
+
+    //check if user already exists
+    if(!user) {
+        res.status(401)
+        throw new Error ('user not found')
+    }
+
+    //checking that only logged in user can update their record
+    if(financeToDelete.user.toString() !== user.id) {
+        res.status(401)
+        throw new Error ('user not authorized')
     }
 
    await financeToDelete.remove()
