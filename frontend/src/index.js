@@ -4,9 +4,6 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
 
 //pages
 import App from "./App";
@@ -16,8 +13,6 @@ import Finance from "./pages/Finance/Finance";
 import Evangelism from "./pages/Evangelism/Evangelism";
 
 //redux
-import reducers from "./utils/reducers";
-const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 
 const chakraTheme = extendTheme({
@@ -58,7 +53,7 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-    <Provider store={store}>
+    // <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <ChakraProvider theme={chakraTheme}>
           <BrowserRouter>
@@ -72,5 +67,5 @@ root.render(
           </BrowserRouter>
         </ChakraProvider>
       </CacheProvider>
-    </Provider>
+    // </Provider>
 );

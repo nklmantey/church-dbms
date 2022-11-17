@@ -17,6 +17,7 @@ const Login = () => {
         />
         <h2>ACES DBMS</h2>
       </HStack>
+
       <div className='left-container'>
         <Stack spacing={2}>
           <h1 className='create-admin-account'>Welcome back, log in</h1>
@@ -100,6 +101,7 @@ const Login = () => {
           </div>
         </Stack>
       </div>
+      
       <div className='right-container'>
         <img 
           src={require('../../images/img.png')}

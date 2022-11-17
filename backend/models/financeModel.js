@@ -1,17 +1,19 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const financeSchema = mongoose.Schema({
-    financeType: String,
+    financeType: {
+        type: String,
+        required: [true, 'please provide a type']
+    },
     totalAmount: {
         type: Number,
-        default: 0
+        default: 0,
+        required: [true, 'please provide a total amount']
     },
-    date: {
-        type: Date,
-        default: new Date()
-    },
-});
+},
+{
+    timestamps: true,
+}
+);
 
-const financeModel = mongoose.model('financeModel', financeSchema);
-
-export default financeModel
+module.exports = mongoose.model('financeModel', financeSchema);

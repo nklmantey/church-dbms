@@ -1,23 +1,16 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import mongoose from 'mongoose';
+const express = require('express')
+const dotenv = require('dotenv').config()
+const port = process.env.PORT || 5000
+const connectDB = require('./config/db.js')
+
+connectDB()
+
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: false}))
 
 //routes
-import financeRoutes from './routes/finance.js';
+app.use('/api/finances', require('./routes/financeRoutes'))
 
-const app = express();
-
-app.use(bodyParser.json({ limit: "30mb, extended: true" }));
-app.use(bodyParser.urlencoded({ limit: "30mb, extended: true" }));
-app.use(cors());
-
-app.use('/finance', financeRoutes);
-
-//mongo db setup
-const CONNECTION_URL = 'mongodb+srv://mantey:mantey123@church-dbms.wuybcco.mongodb.net/?retryWrites=true&w=majority';
-const PORT = 5000;
-
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => app.listen(PORT, () => console.log(`server listening on port: ${PORT}`)))
-    .catch((error) => console.log(error.message));
+app.listen(port, () => console.log(`server started on port ${port}`))

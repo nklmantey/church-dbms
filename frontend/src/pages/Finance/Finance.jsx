@@ -2,25 +2,15 @@ import React, { useState } from 'react'
 import './styles.scss'
 import DrawerNav from '../../components/DrawerNav/DrawerNav'
 import { Button, Input, VStack } from '@chakra-ui/react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import { createFinanceData } from '../../utils/actions/finance'
 
 const Finance = () => {
-  const dispatch = useDispatch();
   const [financeData, setFinanceData] = useState({
     type: '',
     totalAmount: 0,
     date: ''
   })
 
-  const finance = useSelector((state) => state.finance);
-  console.log(finance)
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createFinanceData(financeData))
-  }
+  const handleSubmit = (e) => {''}
 
   return(
     <div>
