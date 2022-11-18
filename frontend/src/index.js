@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 //pages
-// import App from "./App";
+import App from "./App";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Finance from "./pages/Finance/Finance";
@@ -61,7 +61,8 @@ root.render(
         <ChakraProvider theme={chakraTheme}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Finance />} />
+              <Route path="/" element={<App />} />
+              <Route path="/finance" element={<Finance />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/evangelism" element={<Evangelism />} />

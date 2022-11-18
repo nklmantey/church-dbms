@@ -1,14 +1,39 @@
+.main-container {
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+
+    @media screen and (max-width: 426px) {
+        background-image: url('../../images/img.png');
+    }
+    
+}
+
 .left-container {
     width: 50vw;
     height: 100vh;
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    @media screen and (max-width: 426px) {
+        width: 100vw;
+        height: fit-content;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex: 1;
+        justify-self: center;
+    }
 }
 
 .right-container {
     width: 50vw;
     height: 100vh;
+
+    @media screen and (max-width: 426px) {
+        display: none
+    }
 }
 
 .img {
@@ -34,12 +59,20 @@
     }
 }
 
-@media screen and (min-width: 768px) {
-    .create-admin-account {
+.create-admin-account {
+    @media screen and (min-width: 500px) {  
         font-size: 32px;
         font-weight: 900;
         text-align: center;
         margin-top: 30vh;
+    }
+
+    @media screen and (max-width: 426px) {  
+        font-size: 25px;
+        font-weight: 900;
+        text-align: center;
+        color: white;
+        margin-top: -10vh;
     }
 }
 
@@ -47,12 +80,21 @@
     margin: auto;
     display: flex;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 500px) {
         width: 45vw;
     }
 
     @media screen and (min-width: 1440px) {
         width: 35vw;
+    }
+
+    @media screen and (max-width: 426px) {
+        width: 90vw;
+        color: white;
+
+        ::placeholder {
+            color: white;
+        }
     }
 }
 
@@ -68,22 +110,22 @@
     @media screen and (min-width: 1440px) {
         width: 20vw;
     }
-}
 
-.signup-btn {
-    background-color: white;
-    margin: auto;
-    display: flex;
-    height: 7vh;
-    width: 35vw;
-    border-radius: 5px;
-    border: 1px solid black;
-    
-    @media screen and (min-width: 1440px) {
-        width: 20vw;
+    @media screen and (max-width: 426px) {
+        width: 80vw;
     }
 }
 
 .icon {
     margin-top: 1vh;
+
+    @media screen and (max-width: 426px) {
+        fill: white;
+    }
+}
+
+.go-to-login-link {
+    @media screen and (max-width: 426px) {
+        color: #d3d3d3;;
+    }
 }

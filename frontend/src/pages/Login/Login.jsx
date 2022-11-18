@@ -19,10 +19,6 @@ const Login = () => {
     }))
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-  }
-
   return (
     <HStack className='main-container' spacing={0}>
       <HStack className='logo-container'>
@@ -83,16 +79,14 @@ const Login = () => {
           </Stack>
           <Stack spacing={2}>
           <div className='link-container'>
-            <Link to="/finance">
               <Button 
                 color='white' size='lg' 
                 colorScheme='blackAlpha'
                 type='submit'
-                onSubmit={onSubmit}
+                className='login-btn'
               >
                 Log in
               </Button>
-            </Link>
           </div>
           <div>
             <Link to="/signup">

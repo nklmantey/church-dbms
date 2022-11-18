@@ -1,4 +1,4 @@
-import { Button, Center, HStack, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
+import { Button, HStack, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
 import './styles.scss'
 import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
@@ -26,7 +26,7 @@ const Signup = () => {
 
     if(isSuccess || user) {
       toast.success('Account created successfully! 😀')
-      navigate('/')
+      navigate('/finance')
     }
     
     dispatch(reset)

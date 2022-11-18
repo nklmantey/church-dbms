@@ -62,37 +62,30 @@
     margin-top: 5vh;
     border-radius: 5px;
 
-    button {
+    .login-btn {
         background-color: black;
         margin: auto;
         display: flex;
         height: 7vh;
         width: 35vw;
-
+        border-radius: 5px;
+    
         @media screen and (min-width: 1440px) {
             width: 20vw;
         }
-    }
-}
-
-.login-btn {
     
-}
-
-.login-google-btn {
-    background-color: white;
-    margin: auto;
-    display: flex;
-    height: 7vh;
-    width: 35vw;
-    border-radius: 5px;
-    border: 1px solid black;
-    
-    @media screen and (min-width: 1440px) {
-        width: 20vw;
+        @media screen and (max-width: 400px) {
+            width: 80vw;
+        }
     }
 }
 
 .icon {
     margin-top: 1.5vh;
+}
+
+.go-to-signup-link {
+    @media screen and (max-width: 400px) {
+        color: #d3d3d3;;
+    }
 }
