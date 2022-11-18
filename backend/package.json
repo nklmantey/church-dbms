@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "index": "nodemon index.js"
+    "start": "node backend/index.js",
+    "index": "nodemon backend/index.js",
+    "client": "npm start prefix --frontend",
+    "dev": "concurrently \"npm run index\" \"npm run client\""
   },
   "keywords": [],
   "author": "",

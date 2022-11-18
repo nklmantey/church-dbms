@@ -5,8 +5,23 @@ import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  })
+
+  const { username, password } = formData
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
 
   return (
     <HStack className='main-container' spacing={0}>
@@ -29,14 +44,16 @@ const Signup = () => {
                 }
               />
               <Input 
+                name='username'
                 type='text' 
                 placeholder='Username'
+                value={username}
                 border='2px'
                 borderColor='gray.300'
                 isInvalid={username.length === 0 ? false : username.length > 0 ? false : true} 
                 errorBorderColor='red.300'
                 size='lg'
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={onChange}
               />
             </InputGroup>
           </div>
@@ -49,14 +66,16 @@ const Signup = () => {
                 }
               />
               <Input
+                name='password'
                 type='password' 
                 placeholder='Password'
+                value={password}
                 isInvalid={password.length === 0 ? false : password.length > 8 ? false : true} 
                 errorBorderColor='red.300'
                 border='2px'
                 borderColor='gray.300'
                 size='lg'
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={onChange}
               />
             </InputGroup>
           </div>
@@ -66,22 +85,11 @@ const Signup = () => {
             <Button 
               className='create-account-btn' 
               color='white' size='lg' 
-              colorScheme='blackAlpha' 
-              onClick={() => alert('button clicked')}
+              colorScheme='blackAlpha'
+              type='submit'
+              onClick={onSubmit}
             >
               Create account
-            </Button>
-          </div>
-          <div className='su-btn-container'>
-            <Button 
-              className='signup-btn' 
-              color='black' 
-              size='lg' 
-              variant='outline' 
-              colorScheme='blackAlpha'
-              onClick={() => alert('button clicked')}
-            >
-              Sign up with Google
             </Button>
           </div>
           <div>

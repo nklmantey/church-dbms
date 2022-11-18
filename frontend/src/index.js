@@ -59,10 +59,10 @@ root.render(
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<App />} />
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<Signup />} />
-              <Route path="finance" element={<Finance />} />
-              <Route path="evangelism" element={<Evangelism />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/finance" element={<Finance />} />
+              <Route path="/evangelism" element={<Evangelism />} />
             </Routes>
           </BrowserRouter>
         </ChakraProvider>

@@ -71,7 +71,7 @@ const deleteFinance = asyncHandler(async (req, res) => {
         throw new Error ('user not found')
     }
 
-    //checking that only logged in user can update their record
+    //checking that only logged in user can delete their record
     if(financeToDelete.user.toString() !== user.id) {
         res.status(401)
         throw new Error ('user not authorized')

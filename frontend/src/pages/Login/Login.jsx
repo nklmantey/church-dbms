@@ -5,8 +5,23 @@ import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  })
+
+  const { username, password } = formData
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
 
   return (
     <HStack className='main-container' spacing={0}>
@@ -30,14 +45,16 @@ const Login = () => {
                 }
               />
               <Input 
-                type='text' 
+                type='text'
+                name='username'
+                value={username}
                 placeholder='Username'
                 border='2px'
                 borderColor='gray.300'
                 isInvalid={username.length === 0 ? false : username.length > 0 ? false : true} 
                 errorBorderColor='red.300'
                 size='lg'
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={onChange}
               />
             </InputGroup>
           </div>
@@ -50,14 +67,16 @@ const Login = () => {
                 }
               />
               <Input
-                type='password' 
+                type='password'
+                name='password'
+                value={password}
                 placeholder='Password'
                 isInvalid={password.length === 0 ? false : password.length > 8 ? false : true} 
                 errorBorderColor='red.300'
                 border='2px'
                 borderColor='gray.300'
                 size='lg'
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={onChange}
               />
             </InputGroup>
           </div>
@@ -72,18 +91,6 @@ const Login = () => {
                 Log in
               </Button>
             </Link>
-          </div>
-          <div>
-            <Button 
-              className='login-google-btn' 
-              color='black' 
-              size='lg' 
-              variant='outline' 
-              colorScheme='blackAlpha'
-              onClick={() => alert('button clicked')}
-            >
-              Log in with Google
-            </Button>
           </div>
           <div>
             <Link to="/signup">
