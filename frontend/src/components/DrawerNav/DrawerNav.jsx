@@ -20,10 +20,26 @@ import { TbEdit } from 'react-icons/tb'
 import { TbBox } from 'react-icons/tb'
 import { TbLogout } from 'react-icons/tb'
 import './styles.scss'
+import { logout, reset } from '../../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 const DrawerNav = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+
+    const { user } = useSelector((state) => state.auth )
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const logoutUser = () => {
+      dispatch(logout())
+      dispatch(reset())
+
+      if(!user) {
+        navigate('/login')
+      } 
+    }
     
     return (
       <>
@@ -128,6 +144,7 @@ const DrawerNav = () => {
                     className='single-drawer-item' 
                     w='16vw' 
                     variant={'ghost'}
+                    onClick={logoutUser}
                   > 
                     <HStack spacing={4}>
                       <TbLogout size={25} color='red' />

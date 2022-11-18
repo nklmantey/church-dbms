@@ -1,4 +1,4 @@
-import { Button, HStack, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
+import { Button, Center, HStack, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
 import React, { useState, useEffect } from 'react'
 import './styles.scss'
 import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { register, reset } from '../../features/auth/authSlice';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -20,10 +21,11 @@ const Signup = () => {
 
   useEffect(() => {
     if(isError){
-      toast.error(message)
+      toast.error(message);
     }
 
     if(isSuccess || user) {
+      toast.success('Account created successfully! 😀')
       navigate('/')
     }
     
@@ -37,7 +39,7 @@ const Signup = () => {
     }))
   }
 
-  const onClick = () => {
+  const signupUser = () => {
     //dispatching registration action
     const userData = {
       username,
@@ -49,7 +51,7 @@ const Signup = () => {
 
   if(isLoading) {
     return(
-      <h1>signing you up...</h1>
+      <LoadingSpinner />
     )
   }
 
@@ -100,7 +102,7 @@ const Signup = () => {
                 type='password' 
                 placeholder='Password'
                 value={userPwd}
-                isInvalid={userPwd.length === 0 ? false : userPwd.length > 8 ? false : true} 
+                isInvalid={userPwd.length === 0 ? false : userPwd.length >= 6 ? false : true} 
                 errorBorderColor='red.300'
                 border='2px'
                 borderColor='gray.300'
@@ -116,7 +118,7 @@ const Signup = () => {
               className='create-account-btn' 
               color='white' size='lg' 
               colorScheme='blackAlpha'
-              onClick={onClick}
+              onClick={signupUser}
             >
               Create account
             </Button>
