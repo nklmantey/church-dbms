@@ -4,16 +4,19 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 //pages
-import App from "./App";
+// import App from "./App";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Finance from "./pages/Finance/Finance";
 import Evangelism from "./pages/Evangelism/Evangelism";
 
 //redux
-
+import { store } from "./app/store";
+import { Provider } from "react-redux";
 
 const chakraTheme = extendTheme({
   colors: {
@@ -53,19 +56,19 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-    // <Provider store={store}>
+    <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <ChakraProvider theme={chakraTheme}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<App />} />
+              <Route path="/" element={<Finance />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/finance" element={<Finance />} />
               <Route path="/evangelism" element={<Evangelism />} />
             </Routes>
+            <ToastContainer />
           </BrowserRouter>
         </ChakraProvider>
       </CacheProvider>
-    // </Provider>
+    </Provider>
 );

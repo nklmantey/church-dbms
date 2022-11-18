@@ -1,16 +1,34 @@
 import { Button, HStack, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles.scss'
 import { TiUserOutline, TiLockClosedOutline } from "react-icons/ti";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import { register, reset } from '../../features/auth/authSlice';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
+    userPwd: '',
   })
 
-  const { username, password } = formData
+  const { username, userPwd } = formData
+  const { user, isLoading, isSuccess, isError, message } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(isError){
+      toast.error(message)
+    }
+
+    if(isSuccess || user) {
+      navigate('/')
+    }
+    
+    dispatch(reset)
+  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -19,8 +37,20 @@ const Signup = () => {
     }))
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const onClick = () => {
+    //dispatching registration action
+    const userData = {
+      username,
+      userPwd
+    }
+
+    dispatch(register(userData))
+  }
+
+  if(isLoading) {
+    return(
+      <h1>signing you up...</h1>
+    )
   }
 
   return (
@@ -66,11 +96,11 @@ const Signup = () => {
                 }
               />
               <Input
-                name='password'
+                name='userPwd'
                 type='password' 
                 placeholder='Password'
-                value={password}
-                isInvalid={password.length === 0 ? false : password.length > 8 ? false : true} 
+                value={userPwd}
+                isInvalid={userPwd.length === 0 ? false : userPwd.length > 8 ? false : true} 
                 errorBorderColor='red.300'
                 border='2px'
                 borderColor='gray.300'
@@ -86,8 +116,7 @@ const Signup = () => {
               className='create-account-btn' 
               color='white' size='lg' 
               colorScheme='blackAlpha'
-              type='submit'
-              onClick={onSubmit}
+              onClick={onClick}
             >
               Create account
             </Button>

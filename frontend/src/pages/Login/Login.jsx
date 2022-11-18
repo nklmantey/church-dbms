@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
+    userPwd: '',
   })
 
-  const { username, password } = formData
+  const { username, userPwd } = formData
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -68,10 +68,10 @@ const Login = () => {
               />
               <Input
                 type='password'
-                name='password'
-                value={password}
+                name='userPwd'
+                value={userPwd}
                 placeholder='Password'
-                isInvalid={password.length === 0 ? false : password.length > 8 ? false : true} 
+                isInvalid={userPwd.length === 0 ? false : userPwd.length > 8 ? false : true} 
                 errorBorderColor='red.300'
                 border='2px'
                 borderColor='gray.300'
@@ -86,7 +86,9 @@ const Login = () => {
             <Link to="/finance">
               <Button 
                 color='white' size='lg' 
-                colorScheme='blackAlpha' 
+                colorScheme='blackAlpha'
+                type='submit'
+                onSubmit={onSubmit}
               >
                 Log in
               </Button>
