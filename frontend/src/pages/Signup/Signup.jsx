@@ -21,11 +21,15 @@ const Signup = () => {
 
   useEffect(() => {
     if(isError){
-      toast.error(message);
+      toast.error(message, {
+        toastId: 'errorMsg',
+      });
     }
 
     if(isSuccess || user) {
-      toast.success('Account created successfully! 😀')
+      toast.success('Account created successfully! 😀', {
+        toastId: 'successMsg'
+      })
       navigate('/finance')
     }
     

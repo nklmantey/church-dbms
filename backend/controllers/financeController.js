@@ -32,7 +32,7 @@ const updateFinance = asyncHandler(async (req, res) => {
 
     if(!financeToUpdate) {
         res.status(400)
-        throw new Error ('finance record not found')
+        throw new Error ('Financial record not found')
     }
 
     const user = await userModel.findById(req.user.id)
@@ -40,13 +40,13 @@ const updateFinance = asyncHandler(async (req, res) => {
     //check if user already exists
     if(!user) {
         res.status(401)
-        throw new Error ('user not found')
+        throw new Error ('User not found')
     }
 
     //checking that only logged in user can update their record
     if(financeToUpdate.user.toString() !== user.id) {
         res.status(401)
-        throw new Error ('user not authorized')
+        throw new Error ('User not authorized')
     }
 
     const updatedFinanceRecord = await financeModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
@@ -60,7 +60,7 @@ const deleteFinance = asyncHandler(async (req, res) => {
 
     if(!financeToDelete) {
         res.status(400)
-        throw new Error('finance record not found')
+        throw new Error('Financial record not found')
     }
 
     const user = await userModel.findById(req.user.id)
@@ -68,13 +68,13 @@ const deleteFinance = asyncHandler(async (req, res) => {
     //check if user already exists
     if(!user) {
         res.status(401)
-        throw new Error ('user not found')
+        throw new Error ('User not found')
     }
 
     //checking that only logged in user can delete their record
     if(financeToDelete.user.toString() !== user.id) {
         res.status(401)
-        throw new Error ('user not authorized')
+        throw new Error ('User not authorized')
     }
 
    await financeToDelete.remove()

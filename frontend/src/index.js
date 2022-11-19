@@ -67,8 +67,8 @@ root.render(
               <Route path="/signup" element={<Signup />} />
               <Route path="/evangelism" element={<Evangelism />} />
             </Routes>
-            <ToastContainer />
           </BrowserRouter>
+          <ToastContainer />
         </ChakraProvider>
       </CacheProvider>
     </Provider>

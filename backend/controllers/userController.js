@@ -9,7 +9,7 @@ const createUser = asyncHandler(async (req, res) => {
 
     if(!username || !userPwd) {
         res.status(400)
-        throw new Error('please fill in all fields')
+        throw new Error('Please fill in all fields')
     }
 
     //check if user exists
@@ -17,7 +17,7 @@ const createUser = asyncHandler(async (req, res) => {
 
     if(userExists) {
         res.status(400)
-        throw new Error('user already exists') 
+        throw new Error('User already exists') 
     }
 
     //hashing userPwd
@@ -38,10 +38,10 @@ const createUser = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(400)
-        throw new Error('invalid user data')
+        throw new Error('Invalid user data')
     }
 
-   res.json({ message: 'created user successfully'})
+   res.json({ message: 'Created user successfully'})
 })
 
 // @description: authenticate a user
@@ -60,10 +60,10 @@ const loginUser = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(400)
-        throw new Error('invalid credentials')
+        throw new Error('Invalid credentials')
     }
     
-    res.json({ message: 'login user successfully'})
+    res.json({ message: 'Logged in user successfully'})
  })
 
  // @description: get a user's data
