@@ -48,7 +48,7 @@ const createUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const {username, userPwd} = req.body;
 
-  //match user by email
+  //find user by username
   const user = await userModel.findOne({username});
 
   if (user && bcrypt.compare(userPwd, user.userPwd)) {
